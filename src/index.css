@@ -1,0 +1,246 @@
+
+:root {
+  --transition: all 0.3s linear;
+  --spacing: 0.1rem;
+  --radius: 0.25rem;
+  --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  --max-width: 1300px;
+  --fixed-width: 620px;
+}
+
+::selection{
+  color: rgb(204, 140, 21);
+  background-color: black;
+}
+
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Trebuchet MS',
+  Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background: url('./bg.jpg') no-repeat fixed;
+  backdrop-filter: blur(2px);
+  color: var(--clr-grey-1);
+  line-height: 1.5;
+  font-size: 0.875rem;
+}
+
+a{
+  text-decoration: none;
+  color: white;
+}
+
+h2{
+  font-size: 50px;
+  text-transform: capitalize;
+  color: white;
+}
+
+/* section */
+.section {
+  width: 90vw;
+  margin: 0 auto;
+  max-width: var(--max-width);
+}
+
+@media screen and (min-width: 992px) {
+  .section {
+    width: 95vw;
+  }
+}
+
+/* Search Form  */
+
+.search-form {
+  width: 90vw;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  margin-top: 5rem;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.form-input {
+  width: 100%;
+  border: transparent;
+  max-width: 600px;
+  background: white;
+  padding: 1rem;
+  font-size: 1rem;
+  border-radius: var(--radius);
+  color: var(--clr-grey-3);
+  letter-spacing: var(--spacing);
+  margin-top: 1rem;
+  outline: none;
+}
+.error {
+  color: var(--clr-red-dark);
+  text-transform: capitalize;
+  padding-top: 0.5rem;
+  letter-spacing: var(--spacing);
+}
+/*
+=============== 
+Loading
+===============
+*/
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading {
+  width: 6rem;
+  height: 6rem;
+  margin: 0 auto;
+  margin-top: 10rem;
+  border-radius: 50%;
+  border: 3px solid #ccc;
+  border-top-color: var(--clr-primary-5);
+  animation: spinner 0.6s linear infinite;
+}
+
+/*
+=============== 
+Movies
+===============
+*/
+.movies {
+  width: 90vw;
+  max-width: var(--max-width);
+  display: grid;
+  gap: 2rem;
+  margin: 0 auto;
+  padding-bottom: 5rem;
+  padding-top: 3rem;
+}
+.movie {
+  position: relative;
+  overflow: hidden;
+}
+.movie img {
+  width: 100%;
+  height: 400px;
+  display: block;
+  object-fit: cover;
+}
+.movie-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  background: rgba(0, 0, 0, 0.6);
+  transform: translateY(100%);
+  transition: var(--transition);
+}
+.movie-info h4 {
+  color: var(--clr-white);
+  margin-bottom: 0.25rem;
+}
+.movie-info p {
+  margin-bottom: 0;
+  color: var(--clr-white);
+}
+.movie:hover .movie-info {
+  transform: translateY(0);
+}
+@media screen and (min-width: 576px) {
+  .movies {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+}
+
+/*
+=============== 
+Single Movie
+===============
+*/
+
+.single-movie {
+  width: 90vw;
+  max-width: var(--max-width);
+  margin: 4rem auto;
+  display: grid;
+  gap: 2rem;
+}
+.single-movie img {
+  width: 100%;
+  display: block;
+}
+.single-movie-info{
+  color: rgb(206 224 232);
+  font-weight: bold;
+}
+.single-movie-info h2{
+  font-size: 40px;
+}
+.single-movie-info .header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.single-movie-info .header .rating{
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.single-movie-info .header .rating span{
+  color: white;
+  font-weight: bold;
+}
+.single-movie-info .header svg{
+  margin-right: 5px;
+  color: #f6ca2a;
+}
+.single-movie-info .runtime {
+  color: rgb(255 155 33 / 97%);
+  font-size: 18px;
+}
+.single-movie-info p {
+  max-width: 35em;
+  font-size: 1.2rem;
+  margin-block: 1.5rem;
+  line-height: 1.8;
+}
+.single-movie-info .details {
+  font-size: 1rem;
+  color: rgb(255 155 33 / 97%);
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.single-movie-info .details  .title {
+  font-size: 1.3rem;
+  color: white;
+}
+
+.btn {
+  text-transform: capitalize;
+  padding: 0.25rem 0.5rem;
+  background: rgb(23, 95, 143);
+  color: var(--clr-white);
+  border-radius: var(--radius);
+  display: inline-block;
+  margin-top: 0.5rem;
+  letter-spacing: var(--spacing);
+}
+@media screen and (min-width: 992px) {
+  .single-movie {
+    grid-template-columns: 1fr 2fr;
+  }
+}
+.page-error {
+  text-align: center;
+  padding: 2rem;
+}
